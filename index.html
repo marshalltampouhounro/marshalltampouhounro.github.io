@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAMPOUHOUNRO Marshall Chedid – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a08;
+  --cream:#f0ead6;
+  --orange:#e8541a;
+  --yellow:#f0c419;
+  --blue:#0d2035;
+  --white:#ffffff;
+  --gray:#1a1a16;
+  --border:2px solid var(--cream);
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:'Space Mono',monospace;cursor:crosshair}
+#app{width:100%;height:100vh;height:100dvh;position:relative;overflow:hidden}
+
+/* NAV DOTS */
+#nav{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:14px}
+.ndot{width:11px;height:11px;background:transparent;border:1.5px solid var(--cream);opacity:.35;cursor:pointer;transition:all .3s;transform:rotate(45deg)}
+.ndot.active{background:var(--orange);border-color:var(--orange);opacity:1;transform:rotate(45deg) scale(1.5)}
+.ndot:hover{opacity:.8;background:rgba(240,234,214,.2)}
+
+/* COUNTER */
+#counter{position:fixed;left:28px;bottom:36px;z-index:500;font-family:'Unbounded',sans-serif;font-size:10px;color:var(--cream);opacity:.35;letter-spacing:4px}
+
+/* SECTION LABEL */
+#sec-label{position:fixed;left:28px;top:50%;transform:translateY(-50%);z-index:500;writing-mode:vertical-rl;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--cream);opacity:.2;transition:all .6s}
+
+/* HINT */
+#hint{position:fixed;bottom:36px;left:50%;transform:translateX(-50%);z-index:500;font-size:9px;color:var(--cream);opacity:.3;letter-spacing:3px;text-transform:uppercase;transition:opacity .5s;white-space:nowrap}
+
+/* CORNER BRACKETS */
+.corner{position:fixed;z-index:100;pointer-events:none}
+.corner.tl{top:20px;left:20px;width:36px;height:36px;border-top:2px solid var(--orange);border-left:2px solid var(--orange)}
+.corner.tr{top:20px;right:20px;width:36px;height:36px;border-top:2px solid var(--orange);border-right:2px solid var(--orange)}
+.corner.bl{bottom:20px;left:20px;width:36px;height:36px;border-bottom:2px solid var(--orange);border-left:2px solid var(--orange)}
+.corner.br{bottom:20px;right:20px;width:36px;height:36px;border-bottom:2px solid var(--orange);border-right:2px solid var(--orange)}
+
+/* SCENE (transitions fluides sans cube 3D) */
+#scene{width:100%;height:100vh;position:relative;overflow:hidden}
+#cube{width:100%;height:100%;position:relative}
+
+/* FACES */
+.face{
+  position:absolute;
+  width:100%;height:100%;
+  inset:0;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(28px) scale(.99);
+  transition:
+    opacity .5s ease,
+    transform .75s cubic-bezier(.22,1,.36,1);
+  overflow-x:hidden;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.face.active{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0) scale(1);
+  z-index:2;
+}
+.face.leaving-up{
+  opacity:0;
+  transform:translateY(-24px) scale(.995);
+  z-index:1;
+}
+.face.leaving-down{
+  opacity:0;
+  transform:translateY(24px) scale(.995);
+  z-index:1;
+}
+
+/* ===================== */
+/* SECTION 0 — HERO      */
+/* ===================== */
+.f0{background:var(--bg)}
+.hero-wrap{display:flex;width:100%;min-height:100%;flex-direction:column;justify-content:center;padding:80px 80px 100px;position:relative}
+.hero-tag{display:inline-block;font-size:9px;letter-spacing:5px;color:var(--orange);text-transform:uppercase;border:1px solid var(--orange);padding:5px 14px;margin-bottom:32px;width:fit-content}
+.hero-name{font-family:'Unbounded',sans-serif;font-size:clamp(32px,5.5vw,76px);font-weight:900;color:var(--cream);line-height:.95;margin-bottom:0}
+.hero-name .accent{color:var(--orange)}
+.hero-title{font-size:clamp(9px,1.2vw,12px);color:var(--cream);opacity:.45;letter-spacing:3px;text-transform:uppercase;margin-top:28px;line-height:2.2;max-width:400px}
+.hero-cta{margin-top:52px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.btn-main{padding:15px 32px;background:var(--orange);color:var(--bg);font-family:'Unbounded',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;font-weight:700;transition:all .2s}
+.btn-main:hover{background:var(--yellow);transform:translate(-3px,-3px)}
+.btn-ghost{padding:15px 32px;background:transparent;color:var(--cream);font-family:'Unbounded',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;border:1.5px solid rgba(240,234,214,.4);cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:var(--cream);background:var(--cream);color:var(--bg)}
+/* Deco grid right */
+.hero-deco{position:absolute;right:80px;top:50%;transform:translateY(-50%);opacity:.07;display:grid;grid-template-columns:repeat(7,32px);gap:3px}
+.hd{width:32px;height:32px;border:1px solid var(--cream)}
+.hd.f{background:var(--cream)}
+/* Big letters deco */
+.hero-bg-text{position:absolute;bottom:-20px;right:40px;font-family:'Unbounded',sans-serif;font-size:200px;font-weight:900;color:var(--cream);opacity:.03;line-height:1;pointer-events:none;letter-spacing:-10px}
+
+/* ===================== */
+/* SECTION 1 — ABOUT     */
+/* ===================== */
+.f1{background:var(--cream)}
+.about-wrap{display:flex;width:100%;min-height:100%;padding:70px 80px}
+.about-left{flex:1.1;display:flex;flex-direction:column;justify-content:center;padding-right:70px;border-right:2px solid rgba(10,10,8,.12)}
+.about-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding-left:70px}
+.sec-label{font-size:9px;letter-spacing:5px;color:var(--orange);text-transform:uppercase;margin-bottom:24px}
+.about-h{font-family:'Unbounded',sans-serif;font-size:clamp(26px,3.8vw,50px);font-weight:900;color:var(--bg);line-height:1;margin-bottom:28px}
+.about-p{font-size:12px;line-height:2.2;color:var(--bg);opacity:.65;max-width:380px}
+.av{width:140px;height:140px;border:3px solid var(--bg);background:var(--bg);display:flex;align-items:center;justify-content:center;margin-bottom:32px;position:relative;flex-shrink:0}
+.av::after{content:'';position:absolute;width:100%;height:100%;border:3px solid var(--orange);top:9px;left:9px}
+.av-i{font-family:'Unbounded',sans-serif;font-size:32px;font-weight:900;color:var(--cream)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:8px;width:100%}
+.stat{border:2px solid rgba(10,10,8,.15);padding:18px 14px;background:transparent}
+.stat-n{font-family:'Unbounded',sans-serif;font-size:26px;font-weight:900;color:var(--orange);line-height:1}
+.stat-t{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--bg);opacity:.5;margin-top:5px}
+
+/* ===================== */
+/* SECTION 2 — SKILLS    */
+/* ===================== */
+.f2{background:var(--blue)}
+.skills-wrap{display:flex;flex-direction:column;width:100%;min-height:100%;padding:70px 80px;justify-content:center}
+.skills-wrap .sec-label{color:var(--yellow)}
+.skills-h{font-family:'Unbounded',sans-serif;font-size:clamp(24px,3.5vw,46px);font-weight:900;color:var(--cream);margin-bottom:40px;line-height:1}
+.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.sk{background:rgba(240,234,214,.05);border:1px solid rgba(240,234,214,.1);padding:22px 18px;transition:all .3s;cursor:default;position:relative;overflow:hidden}
+.sk:hover{background:rgba(240,234,214,.1);border-color:rgba(240,193,25,.6)}
+.sk::after{content:'';position:absolute;bottom:0;left:0;height:2px;background:var(--yellow);width:0;transition:width .5s}
+.sk:hover::after{width:100%}
+.sk-ico{font-size:22px;margin-bottom:12px;color:var(--yellow);display:block}
+.sk-n{font-family:'Unbounded',sans-serif;font-size:10px;font-weight:700;color:var(--cream);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.sk-d{font-size:10px;color:rgba(240,234,214,.45);line-height:1.8;letter-spacing:.3px}
+.sk-bar{height:1px;background:rgba(240,234,214,.1);margin-top:14px;position:relative}
+.sk-bar::after{content:'';position:absolute;left:0;top:0;height:100%;background:var(--yellow);transition:width .5s .1s}
+.sk:hover .sk-bar::after{width:100% !important}
+
+/* ===================== */
+/* SECTION 3 — SERVICES  */
+/* ===================== */
+.f3{background:var(--orange)}
+.svc-wrap{display:flex;width:100%;min-height:100%;padding:70px 80px;gap:80px;align-items:center}
+.svc-left{flex:1;display:flex;flex-direction:column;justify-content:center}
+.svc-right{flex:1.3;display:flex;flex-direction:column;gap:2px;justify-content:center}
+.svc-left .sec-label{color:rgba(10,10,8,.5)}
+.svc-h{font-family:'Unbounded',sans-serif;font-size:clamp(28px,4.2vw,58px);font-weight:900;color:var(--bg);line-height:.95;margin-bottom:28px}
+.svc-p{font-size:12px;line-height:2.2;color:var(--bg);opacity:.7;margin-bottom:36px}
+.svc-item{background:rgba(10,10,8,.07);border-left:4px solid var(--bg);padding:16px 20px;transition:all .25s;cursor:default}
+.svc-item:hover{background:rgba(10,10,8,.14);border-left-width:8px}
+.svc-t{font-family:'Unbounded',sans-serif;font-size:11px;font-weight:700;color:var(--bg);letter-spacing:.5px;text-transform:uppercase}
+.svc-s{font-size:10px;color:var(--bg);opacity:.6;margin-top:4px;line-height:1.7}
+
+/* ===================== */
+/* SECTION 4 — PROJETS   */
+/* ===================== */
+.f4{background:var(--gray)}
+.proj-wrap{display:flex;flex-direction:column;width:100%;min-height:100%;padding:70px 80px;justify-content:center}
+.proj-wrap .sec-label{color:var(--orange)}
+.proj-h{font-family:'Unbounded',sans-serif;font-size:clamp(24px,3.5vw,46px);font-weight:900;color:var(--cream);margin-bottom:36px;line-height:1}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.proj{border:1px solid rgba(240,234,214,.09);padding:22px 18px;display:flex;flex-direction:column;transition:all .3s;cursor:pointer;position:relative;overflow:hidden;min-height:140px}
+.proj:hover{border-color:rgba(232,84,26,.6);background:rgba(240,234,214,.03)}
+.proj-num{font-family:'Unbounded',sans-serif;font-size:44px;font-weight:900;color:rgba(240,234,214,.04);position:absolute;top:8px;right:14px;line-height:1;pointer-events:none}
+.proj-cat{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.proj-title{font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;color:var(--cream);line-height:1.3;margin-bottom:8px}
+.proj-desc{font-size:10px;color:rgba(240,234,214,.45);line-height:1.9}
+.proj-arr{position:absolute;bottom:14px;right:14px;color:var(--orange);font-size:18px;opacity:0;transition:opacity .25s}
+.proj:hover .proj-arr{opacity:1}
+
+/* ===================== */
+/* SECTION 5 — CONTACT   */
+/* ===================== */
+.f5{background:var(--cream)}
+.contact-wrap{display:flex;flex-direction:column;width:100%;min-height:100%;padding:70px 80px;justify-content:center;position:relative}
+.contact-wrap .sec-label{color:var(--orange)}
+.contact-h{font-family:'Unbounded',sans-serif;font-size:clamp(32px,5.5vw,76px);font-weight:900;color:var(--bg);line-height:.9;margin-bottom:8px}
+.contact-h .hl{color:var(--orange)}
+.contact-sub{font-size:11px;color:var(--bg);opacity:.5;margin-top:20px;margin-bottom:44px;letter-spacing:1px;line-height:2.2}
+.ct-list{display:flex;flex-direction:column;max-width:560px}
+.ct{display:flex;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid rgba(10,10,8,.1);cursor:pointer;transition:all .2s}
+.ct:first-child{border-top:1px solid rgba(10,10,8,.1)}
+.ct:hover{padding-left:16px}
+.ct-link{text-decoration:none;color:inherit}
+.ct-ico{width:42px;height:42px;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;transition:all .2s;font-family:'Unbounded',sans-serif}
+.ct:hover .ct-ico{background:var(--orange);border-color:var(--orange);color:var(--white)}
+.ct-info{flex:1}
+.ct-lbl{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--bg);opacity:.45;margin-bottom:3px}
+.ct-val{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;color:var(--bg)}
+.ct-arr{color:var(--orange);font-size:20px;opacity:0;transition:opacity .2s}
+.ct:hover .ct-arr{opacity:1}
+/* Deco */
+.contact-deco{position:absolute;right:80px;bottom:80px;opacity:.07}
+
+/* LOADING SCREEN */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;transition:opacity .6s}
+#loader.hide{opacity:0;pointer-events:none}
+.loader-text{font-family:'Unbounded',sans-serif;font-size:11px;color:var(--orange);letter-spacing:5px;text-transform:uppercase}
+.loader-bar{width:200px;height:1px;background:rgba(240,234,214,.1);position:relative;overflow:hidden}
+.loader-fill{height:100%;background:var(--orange);width:0;animation:load 1.2s ease forwards}
+@keyframes load{to{width:100%}}
+
+/* ===================== */
+/* RESPONSIVE            */
+/* ===================== */
+@media (max-width: 1280px){
+  .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{padding:64px 56px 82px}
+  .hero-deco{right:56px}
+  .contact-deco{right:56px;bottom:56px}
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width: 1024px){
+  #nav{right:18px}
+  #counter{left:18px;bottom:22px}
+  #sec-label{left:18px}
+  #hint{bottom:20px}
+  .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{padding:56px 40px 78px}
+  .about-wrap,.svc-wrap{flex-direction:column;gap:30px;align-items:flex-start}
+  .about-left{padding-right:0;border-right:none}
+  .about-right{padding-left:0;width:100%}
+  .sk-grid,.proj-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-deco{display:none}
+}
+
+@media (max-width: 768px){
+  html,body{cursor:auto}
+  #scene{height:100vh;height:100dvh}
+  .face{
+    overscroll-behavior:contain;
+    scrollbar-width:thin;
+  }
+  #nav{
+    right:50%;
+    top:auto;
+    bottom:max(12px, env(safe-area-inset-bottom));
+    transform:translateX(50%);
+    flex-direction:row;
+    gap:10px;
+    background:rgba(10,10,8,.35);
+    border:1px solid rgba(240,234,214,.15);
+    padding:8px 10px;
+    backdrop-filter:blur(4px);
+  }
+  .ndot{width:9px;height:9px}
+  #counter{
+    left:max(14px, env(safe-area-inset-left));
+    top:max(12px, env(safe-area-inset-top));
+    bottom:auto;
+    font-size:9px;
+    letter-spacing:2px;
+    opacity:.45;
+  }
+  #sec-label{display:none}
+  #hint{
+    bottom:calc(max(12px, env(safe-area-inset-bottom)) + 44px);
+    font-size:8px;
+    letter-spacing:1.6px;
+    max-width:90vw;
+    text-align:center;
+  }
+  .corner{display:none}
+  .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{padding:52px 18px 92px}
+  .hero-title,.about-p,.svc-p,.contact-sub{font-size:11px;line-height:1.9}
+  .hero-cta{margin-top:30px;gap:10px}
+  .btn-main,.btn-ghost{padding:12px 18px;font-size:9px;letter-spacing:2px}
+  .hero-deco,.hero-bg-text{display:none}
+  .about-h,.skills-h,.svc-h,.proj-h{line-height:1.05}
+  .av{width:110px;height:110px}
+  .av-i{font-size:26px}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .sk-grid,.proj-grid{grid-template-columns:1fr}
+  .svc-right{width:100%}
+  .ct{gap:14px;padding:14px 0}
+  .ct-ico{width:36px;height:36px;font-size:11px}
+  .ct-val{font-size:11px;word-break:break-word}
+}
+
+@media (max-width: 420px){
+  .hero-name{font-size:clamp(28px,11vw,42px)}
+  .contact-h{font-size:clamp(30px,12vw,44px)}
+  .proj{min-height:118px;padding:16px 14px}
+  .proj-title{font-size:12px}
+  .proj-desc{font-size:9px;line-height:1.75}
+  #hint{display:none}
+}
+
+/* Petits mobiles (iPhone SE / Android compacts) */
+@media (max-width: 380px){
+  .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{padding:48px 14px 88px}
+  .hero-tag,.sec-label{font-size:8px;letter-spacing:3px}
+  .about-p,.svc-p,.contact-sub,.sk-d,.proj-desc{font-size:10px;line-height:1.75}
+  .proj-cat{letter-spacing:2px}
+  .proj-title{font-size:11px}
+  .ct-lbl{letter-spacing:2px}
+}
+
+/* Mobiles en paysage: on réduit les grands titres pour éviter la coupe */
+@media (max-height: 520px) and (orientation: landscape){
+  .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{
+    padding:24px 18px 76px;
+    justify-content:flex-start;
+  }
+  .hero-name{font-size:clamp(26px,5.4vw,44px);line-height:1}
+  .contact-h{font-size:clamp(26px,5vw,42px)}
+  .hero-title,.about-p,.svc-p,.contact-sub{line-height:1.55}
+  .hero-cta{margin-top:18px}
+  #hint{display:none}
+}
+
+/* Très grands écrans: meilleure respiration visuelle */
+@media (min-width: 1600px){
+  .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{
+    max-width:1580px;
+    margin:0 auto;
+    padding-left:96px;
+    padding-right:96px;
+  }
+  .proj-grid{gap:6px}
+  .sk-grid{gap:6px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-text">Marshall Chedid</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- UI FIXE -->
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<div id="nav">
+  <div class="ndot active" onclick="goTo(0)" title="Accueil"></div>
+  <div class="ndot" onclick="goTo(1)" title="À propos"></div>
+  <div class="ndot" onclick="goTo(2)" title="Skills"></div>
+  <div class="ndot" onclick="goTo(3)" title="Services"></div>
+  <div class="ndot" onclick="goTo(4)" title="Projets"></div>
+  <div class="ndot" onclick="goTo(5)" title="Contact"></div>
+</div>
+<div id="counter">01 · 06</div>
+<div id="sec-label">Accueil</div>
+<div id="hint">↓ scroll · swipe · flèches clavier</div>
+
+<!-- 3D SCENE -->
+<div id="scene">
+<div id="cube">
+
+  <!-- FACE 0 — HERO -->
+  <div class="face f0">
+    <div class="hero-wrap">
+      <div class="hero-bg-text">MC</div>
+      <div class="hero-deco" id="gdeco"></div>
+      <span class="hero-tag">Portfolio · 2025</span>
+      <h1 class="hero-name">
+        TAMPOUHOUNRO<br>
+        <span class="accent">Marshall</span><br>
+        Chedid
+      </h1>
+      <p class="hero-title">
+        Product &amp; Business Manager · Digital &amp; AI-driven<br>
+        Web Dev · UI/UX Design · Stratégie · Contenu · Vidéo
+      </p>
+      <div class="hero-cta">
+        <button class="btn-main" onclick="goTo(1)">Découvrir →</button>
+        <button class="btn-ghost" onclick="goTo(5)">Me contacter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACE 1 — ABOUT -->
+  <div class="face f1">
+    <div class="about-wrap">
+      <div class="about-left">
+        <span class="sec-label">01 · À propos</span>
+        <h2 class="about-h">Bâtisseur<br>de solutions<br>digitales.</h2>
+        <p class="about-p">
+          Product &amp; Business Manager spécialisé en transformation digitale et IA. 
+          Je conçois des produits qui allient vision stratégique, expérience utilisateur 
+          et performance technique. De l'idée au déploiement, je pilote chaque étape.
+        </p>
+      </div>
+      <div class="about-right">
+        <div class="av"><span class="av-i">TMC</span></div>
+        <div class="stat-grid">
+          <div class="stat"><div class="stat-n">4+</div><div class="stat-t">Ans d'exp.</div></div>
+          <div class="stat"><div class="stat-n">30+</div><div class="stat-t">Projets</div></div>
+          <div class="stat"><div class="stat-n">10+</div><div class="stat-t">Domaines</div></div>
+          <div class="stat"><div class="stat-n">∞</div><div class="stat-t">Créativité</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACE 2 — SKILLS -->
+  <div class="face f2">
+    <div class="skills-wrap">
+      <span class="sec-label">02 · Compétences</span>
+      <h2 class="skills-h">Ce que<br>je maîtrise.</h2>
+      <div class="sk-grid">
+        <div class="sk">
+          <span class="sk-ico">◈</span>
+          <div class="sk-n">Product Management</div>
+          <div class="sk-d">Vision produit · Roadmap · KPIs · Agile / Scrum</div>
+          <div class="sk-bar" style="--w:90%"><span style="width:90%"></span></div>
+        </div>
+        <div class="sk">
+          <span class="sk-ico">◉</span>
+          <div class="sk-n">Web Dev</div>
+          <div class="sk-d">HTML · CSS · JavaScript · Interfaces front-end</div>
+          <div class="sk-bar"><span style="width:85%"></span></div>
+        </div>
+        <div class="sk">
+          <span class="sk-ico">◧</span>
+          <div class="sk-n">UI / UX Design</div>
+          <div class="sk-d">Figma · Wireframes · Prototypes · Design system</div>
+          <div class="sk-bar"><span style="width:88%"></span></div>
+        </div>
+        <div class="sk">
+          <span class="sk-ico">◫</span>
+          <div class="sk-n">Stratégie Digitale</div>
+          <div class="sk-d">Growth · SEO/SEA · Funnel · Automatisation IA</div>
+          <div class="sk-bar"><span style="width:82%"></span></div>
+        </div>
+        <div class="sk">
+          <span class="sk-ico">◬</span>
+          <div class="sk-n">Graphic Design</div>
+          <div class="sk-d">Identité visuelle · Branding · Print &amp; Digital</div>
+          <div class="sk-bar"><span style="width:80%"></span></div>
+        </div>
+        <div class="sk">
+          <span class="sk-ico">◭</span>
+          <div class="sk-n">Contenu &amp; Vidéo</div>
+          <div class="sk-d">Copywriting · Social media · Montage vidéo</div>
+          <div class="sk-bar"><span style="width:85%"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACE 3 — SERVICES -->
+  <div class="face f3">
+    <div class="svc-wrap">
+      <div class="svc-left">
+        <span class="sec-label">03 · Services</span>
+        <h2 class="svc-h">Ce que<br>je fais<br>pour vous.</h2>
+        <p class="svc-p">
+          Solutions sur-mesure pour accélérer<br>
+          votre transformation digitale et faire<br>
+          grandir vos produits.
+        </p>
+        <button class="btn-main" onclick="goTo(5)">Travailler ensemble →</button>
+      </div>
+      <div class="svc-right">
+        <div class="svc-item">
+          <div class="svc-t">Product Strategy &amp; Management</div>
+          <div class="svc-s">Définition produit · Roadmapping · OKR · Lancement marché</div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-t">Développement Web</div>
+          <div class="svc-s">Sites web · Interfaces · Landing pages · Optimisation</div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-t">Design UI/UX &amp; Branding</div>
+          <div class="svc-s">Identité visuelle · Maquettes · Design system complet</div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-t">Marketing Digital &amp; IA</div>
+          <div class="svc-s">Stratégie contenu · Automatisation · Growth AI-driven</div>
+        </div>
+        <div class="svc-item">
+          <div class="svc-t">Montage Vidéo &amp; Motion</div>
+          <div class="svc-s">Reels · Publicités · Capsules e-learning · Motion design</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACE 4 — PROJETS -->
+  <div class="face f4">
+    <div class="proj-wrap">
+      <span class="sec-label">04 · Projets</span>
+      <h2 class="proj-h">Réalisations<br>sélectionnées.</h2>
+      <div class="proj-grid">
+        <div class="proj">
+          <span class="proj-num">01</span>
+          <div class="proj-cat">SECURITY • GOVTECH • PKI</div>
+          <div class="proj-title">Plateforme PKI Gouvernementale.</div>
+          <div class="proj-desc">Infrastructure de signature électronique sécurisée, mise en place des bases du module PKI et tests techniques initiaux</div>
+          <div class="proj-arr">→</div>
+        </div>
+        <div class="proj">
+          <span class="proj-num">02</span>
+          <div class="proj-cat">FINTECH • PRODUCT • UX/UI</div>
+          <div class="proj-title">Bérimi – Mobile Payment Platform</div>
+          <div class="proj-desc">Application fintech facilitant les transferts d’argent inter-opérateurs via QR Code, avec wallet intégré, cartes virtuelles et solutions d’épargne (BERIMI)</div>
+          <div class="proj-arr">→</div>
+        </div>
+        <div class="proj">
+          <span class="proj-num">03</span>
+          <div class="proj-cat">MEDIA • CONTENT • SOCIAL STRATEGY</div>
+          <div class="proj-title">Média Urbain – Scène Musicale Béninoise</div>
+          <div class="proj-desc">Plateforme média digitale valorisant la scène rap béninoise à travers des sessions live, du contenu vidéo immersif et une stratégie social media multi-plateformes (DIVRT)</div>
+          <div class="proj-arr">→</div>
+        </div>
+        <div class="proj">
+          <span class="proj-num">04</span>
+          <div class="proj-cat">Web Dev · SEO</div>
+          <div class="proj-title">Sites Web &amp; Expériences Digitales</div>
+          <div class="proj-desc">Conception et développement de sites web avec une approche centrée utilisateur, performance et clarté d’expérience</div>
+          <div class="proj-arr">→</div>
+        </div>
+        <div class="proj">
+          <span class="proj-num">05</span>
+          <div class="proj-cat">BRANDING • VISUAL DESIGN</div>
+          <div class="proj-title">Identité &amp; Direction Artistique</div>
+          <div class="proj-desc">Création de visuels, affiches et identités de marque pour différents projets et clients</div>
+          <div class="proj-arr">→</div>
+        </div>
+        <div class="proj">
+          <span class="proj-num">06</span>
+          <div class="proj-cat">PRODUCT • STRATEGY • DIGITAL</div>
+          <div class="proj-title">Product Strategy &amp; Digital Innovation</div>
+          <div class="proj-desc">Définition de concepts produits, structuration d’expériences digitales et élaboration de stratégies orientées utilisateur et marché</div>
+          <div class="proj-arr">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACE 5 — CONTACT -->
+  <div class="face f5">
+    <div class="contact-wrap">
+      <span class="sec-label">05 · Contact</span>
+      <h2 class="contact-h">
+        Travaillons<br>
+        <span class="hl">ensemble.</span>
+      </h2>
+      <p class="contact-sub">
+        Disponible pour missions freelance, CDI ou collaborations créatives.<br>
+        Basé à Cotonou au Bénin · Remote-friendly partout dans le monde.
+      </p>
+      <div class="ct-list">
+        <a class="ct ct-link" href="mailto:marshall.tampouhounro@gmail.com">
+          <div class="ct-ico">@</div>
+          <div class="ct-info">
+            <div class="ct-lbl">Email</div>
+            <div class="ct-val">marshall.tampouhounro@gmail.com</div>
+          </div>
+          <div class="ct-arr">→</div>
+        </a>
+        <a class="ct ct-link" href="http://linkedin.com/in/marshall-chedid-tampouhounro" target="_blank" rel="noopener noreferrer">
+          <div class="ct-ico">in</div>
+          <div class="ct-info">
+            <div class="ct-lbl">LinkedIn</div>
+            <div class="ct-val">linkedin.com/in/marshall-chedid-tampouhounro</div>
+          </div>
+          <div class="ct-arr">→</div>
+        </a>
+        <a class="ct ct-link" href="https://x.com/marshall_chedid?s=21" target="_blank" rel="noopener noreferrer">
+          <div class="ct-ico">X</div>
+          <div class="ct-info">
+            <div class="ct-lbl">Twitter / X</div>
+            <div class="ct-val">x.com/marshall_chedid</div>
+          </div>
+          <div class="ct-arr">→</div>
+        </a>
+        <div class="ct">
+          <div class="ct-ico">◈</div>
+          <div class="ct-info">
+            <div class="ct-lbl">Portfolio live</div>
+            <div class="ct-val">marshallchedid.com</div>
+          </div>
+          <div class="ct-arr">→</div>
+        </div>
+      </div>
+      <!-- deco -->
+      <svg class="contact-deco" width="180" height="180" viewBox="0 0 180 180">
+        <rect x="0" y="0" width="54" height="54" fill="none" stroke="#0a0a08" stroke-width="2"/>
+        <rect x="63" y="0" width="54" height="54" fill="#0a0a08"/>
+        <rect x="126" y="0" width="54" height="54" fill="none" stroke="#0a0a08" stroke-width="2"/>
+        <rect x="0" y="63" width="54" height="54" fill="#0a0a08"/>
+        <rect x="63" y="63" width="54" height="54" fill="none" stroke="#0a0a08" stroke-width="2"/>
+        <rect x="126" y="63" width="54" height="54" fill="#0a0a08"/>
+        <rect x="0" y="126" width="54" height="54" fill="none" stroke="#0a0a08" stroke-width="2"/>
+        <rect x="63" y="126" width="54" height="54" fill="#0a0a08"/>
+        <rect x="126" y="126" width="54" height="54" fill="none" stroke="#0a0a08" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+
+</div><!-- /cube -->
+</div><!-- /scene -->
+
+<script>
+// ---- LOADER ----
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('loader').classList.add('hide');
+    setTimeout(()=>document.getElementById('loader').remove(),700);
+  },1400);
+});
+
+// ---- HERO DECO GRID ----
+const gd=document.getElementById('gdeco');
+if(gd){for(let i=0;i<42;i++){const d=document.createElement('div');d.className='hd'+(i%3===0?' f':'');gd.appendChild(d);}}
+
+// ---- SECTION TRANSITIONS ----
+const sections=['Accueil','À propos','Skills','Services','Projets','Contact'];
+
+let cur=0, busy=false;
+const faces=document.querySelectorAll('.face');
+const dots=document.querySelectorAll('.ndot');
+const counter=document.getElementById('counter');
+const hint=document.getElementById('hint');
+const secLbl=document.getElementById('sec-label');
+
+function applyState(n, direction=1){
+  faces.forEach((face, i)=>{
+    face.classList.remove('active','leaving-up','leaving-down');
+    if(i===n){
+      face.classList.add('active');
+      return;
+    }
+    if(i===cur){
+      face.classList.add(direction>0 ? 'leaving-up' : 'leaving-down');
+    }
+  });
+}
+
+function goTo(n){
+  if(n===cur||busy)return;
+  const previous=cur;
+  const direction=n>previous?1:-1;
+  busy=true;
+  applyState(n,direction);
+  cur=n;
+  dots.forEach((d,i)=>d.classList.toggle('active',i===n));
+  counter.textContent=(n+1).toString().padStart(2,'0')+' · 06';
+  secLbl.textContent=sections[n];
+  if(n>0)hint.style.opacity='0';
+  setTimeout(()=>{busy=false;},760);
+}
+
+function next(){if(cur<5)goTo(cur+1);}
+function prev(){if(cur>0)goTo(cur-1);}
+
+// Keyboard
+document.addEventListener('keydown',e=>{
+  if(['ArrowDown','ArrowRight'].includes(e.key))next();
+  if(['ArrowUp','ArrowLeft'].includes(e.key))prev();
+});
+
+// Mouse wheel
+let wt=0;
+window.addEventListener('wheel',e=>{
+  const now=Date.now();
+  if(now-wt<900)return;
+  wt=now;
+  e.deltaY>0?next():prev();
+},{passive:true});
+
+// Touch
+let ty=null;
+window.addEventListener('touchstart',e=>{ty=e.touches[0].clientY;},{passive:true});
+window.addEventListener('touchend',e=>{
+  if(ty===null)return;
+  const dy=ty-e.changedTouches[0].clientY;
+  if(Math.abs(dy)>50){dy>0?next():prev();}
+  ty=null;
+},{passive:true});
+
+// Init
+faces.forEach((f,i)=>f.classList.toggle('active',i===0));
+applyState(0,1);
+setTimeout(()=>{hint.style.opacity='0';},4000);
+</script>
+</body>
+</html>
