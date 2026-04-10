@@ -3,7 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMPOUHOUNRO Marshall Chedid – Portfolio</title>
+<title>Marshall Chedid Tampouhounro — Product &amp; Business Manager · Portfolio</title>
+<meta name="description" content="Marshall Chedid Tampouhounro, référent digital et Product Manager au Bénin : produit digital, UX/UI, fintech. Écosystème Sèmè City, Bénin Digital Product, École des métiers du numérique. Cotonou, remote.">
+<meta name="keywords" content="Marshall Chedid Tampouhounro, référent digital, référent digital Bénin, Bénin Digital Product, Benin digital product, Sèmè City, Seme City, école des métiers du numérique, École des métiers du numérique, EMN Bénin, product digital, product manager Bénin, UX UI, Cotonou, portfolio">
+<meta name="author" content="Marshall Chedid Tampouhounro">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="theme-color" content="#0a0a08">
+<link rel="canonical" href="https://marshalltampouhounro.github.io/">
+<!-- Si tu utilises un domaine perso (ex. marshallchedid.com), remplace l’URL du canonical + og:url + JSON-LD par ton URL définitive. -->
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Marshall Chedid Tampouhounro — Portfolio">
+<meta property="og:title" content="Marshall Chedid Tampouhounro —Referent Digital Product &amp; Business Manager · Portfolio">
+<meta property="og:description" content="Référent digital &amp; Product Manager au Bénin. Produit digital, UX/UI, fintech — Sèmè City, Bénin Digital Product, École des métiers du numérique.">
+<meta property="og:url" content="https://marshalltampouhounro.github.io/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Marshall Chedid Tampouhounro — Portfolio">
+<meta name="twitter:description" content="Référent digital · Produit digital Bénin · Sèmè City · École des métiers du numérique · UX/UI · Product.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://marshalltampouhounro.github.io/#website",
+      "url": "https://marshalltampouhounro.github.io/",
+      "name": "Marshall Chedid Tampouhounro — Portfolio",
+      "inLanguage": "fr-FR",
+      "description": "Portfolio : référent digital, product management, UX/UI, fintech au Bénin — Sèmè City, Bénin Digital Product, École des métiers du numérique."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://marshalltampouhounro.github.io/#person",
+      "name": "Marshall Chedid Tampouhounro",
+      "givenName": "Marshall Chedid",
+      "familyName": "Tampouhounro",
+      "jobTitle": "Product & Business Manager, référent digital",
+      "description": "Spécialisé en produit digital, transformation numérique, UX/UI et fintech au Bénin. Impliqué dans l'écosystème Sèmè City, Bénin Digital Product et la formation à l'École des métiers du numérique.",
+      "url": "https://marshalltampouhounro.github.io/",
+      "email": "marshall.tampouhounro@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cotonou",
+        "addressCountry": "BJ"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/marshall-chedid-tampouhounro",
+        "https://x.com/marshall_chedid"
+      ],
+      "knowsAbout": [
+        "Product management",
+        "UX design",
+        "UI design",
+        "Fintech",
+        "Transformation digitale",
+        "Intelligence artificielle",
+        "Développement web",
+        "Branding",
+        "Marketing digital",
+        "Montage vidéo",
+        "Référent digital",
+        "Produit digital",
+        "Bénin Digital Product",
+        "Sèmè City",
+        "École des métiers du numérique"
+      ],
+      "mainEntityOfPage": { "@id": "https://marshalltampouhounro.github.io/#website" }
+    }
+  ]
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -34,6 +108,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 
 /* HINT */
 #hint{position:fixed;bottom:36px;left:50%;transform:translateX(-50%);z-index:500;font-size:9px;color:var(--cream);opacity:.3;letter-spacing:3px;text-transform:uppercase;transition:opacity .5s;white-space:nowrap}
+#lang-switch{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:520;display:flex;gap:6px;background:rgba(10,10,8,.35);border:1px solid rgba(240,234,214,.2);padding:4px}
+.lang-btn{border:none;background:transparent;color:var(--cream);font-size:10px;letter-spacing:1px;padding:6px 10px;cursor:pointer;opacity:.65}
+.lang-btn.active{background:var(--orange);color:var(--bg);opacity:1;font-weight:700}
 
 /* CORNER BRACKETS */
 .corner{position:fixed;z-index:100;pointer-events:none}
@@ -109,6 +186,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 .sec-label{font-size:9px;letter-spacing:5px;color:var(--orange);text-transform:uppercase;margin-bottom:24px}
 .about-h{font-family:'Unbounded',sans-serif;font-size:clamp(26px,3.8vw,50px);font-weight:900;color:var(--bg);line-height:1;margin-bottom:28px}
 .about-p{font-size:12px;line-height:2.2;color:var(--bg);opacity:.65;max-width:380px}
+.about-p--ctx{margin-top:18px;font-size:11px;line-height:2;opacity:.55;max-width:380px}
+.about-p--ctx strong{font-weight:700;color:var(--bg);opacity:.85}
 .av{width:140px;height:140px;border:3px solid var(--bg);background:var(--bg);display:flex;align-items:center;justify-content:center;margin-bottom:32px;position:relative;flex-shrink:0}
 .av::after{content:'';position:absolute;width:100%;height:100%;border:3px solid var(--orange);top:9px;left:9px}
 .av-i{font-family:'Unbounded',sans-serif;font-size:32px;font-weight:900;color:var(--cream)}
@@ -139,17 +218,17 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 /* ===================== */
 /* SECTION 3 — SERVICES  */
 /* ===================== */
-.f3{background:var(--orange)}
+.f3{background:#D9481B}
 .svc-wrap{display:flex;width:100%;min-height:100%;padding:70px 80px;gap:80px;align-items:center}
 .svc-left{flex:1;display:flex;flex-direction:column;justify-content:center}
 .svc-right{flex:1.3;display:flex;flex-direction:column;gap:2px;justify-content:center}
-.svc-left .sec-label{color:rgba(10,10,8,.5)}
-.svc-h{font-family:'Unbounded',sans-serif;font-size:clamp(28px,4.2vw,58px);font-weight:900;color:var(--bg);line-height:.95;margin-bottom:28px}
-.svc-p{font-size:12px;line-height:2.2;color:var(--bg);opacity:.7;margin-bottom:36px}
-.svc-item{background:rgba(10,10,8,.07);border-left:4px solid var(--bg);padding:16px 20px;transition:all .25s;cursor:default}
-.svc-item:hover{background:rgba(10,10,8,.14);border-left-width:8px}
-.svc-t{font-family:'Unbounded',sans-serif;font-size:11px;font-weight:700;color:var(--bg);letter-spacing:.5px;text-transform:uppercase}
-.svc-s{font-size:10px;color:var(--bg);opacity:.6;margin-top:4px;line-height:1.7}
+.svc-left .sec-label{color:rgba(26,26,26,.58)}
+.svc-h{font-family:'Unbounded',sans-serif;font-size:clamp(28px,4.2vw,58px);font-weight:900;color:#1A1A1A;line-height:.95;margin-bottom:28px}
+.svc-p{font-size:12px;line-height:2.2;color:#1A1A1A;opacity:.78;margin-bottom:36px}
+.svc-item{background:rgba(26,26,26,.10);border-left:4px solid #1A1A1A;padding:16px 20px;transition:all .25s;cursor:default}
+.svc-item:hover{background:rgba(26,26,26,.18);border-left-width:8px}
+.svc-t{font-family:'Unbounded',sans-serif;font-size:11px;font-weight:700;color:#1A1A1A;letter-spacing:.5px;text-transform:uppercase}
+.svc-s{font-size:10px;color:#1A1A1A;opacity:.72;margin-top:4px;line-height:1.7}
 
 /* ===================== */
 /* SECTION 4 — PROJETS   */
@@ -172,7 +251,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 /* SECTION 5 — CONTACT   */
 /* ===================== */
 .f5{background:var(--cream)}
-.contact-wrap{display:flex;flex-direction:column;width:100%;min-height:100%;padding:70px 80px;justify-content:center;position:relative}
+.contact-wrap{display:flex;flex-direction:row;width:100%;min-height:100%;padding:46px 80px 50px;justify-content:space-between;align-items:flex-end;gap:40px;position:relative}
+.contact-content{flex:1;max-width:620px}
 .contact-wrap .sec-label{color:var(--orange)}
 .contact-h{font-family:'Unbounded',sans-serif;font-size:clamp(32px,5.5vw,76px);font-weight:900;color:var(--bg);line-height:.9;margin-bottom:8px}
 .contact-h .hl{color:var(--orange)}
@@ -191,6 +271,22 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 .ct:hover .ct-arr{opacity:1}
 /* Deco */
 .contact-deco{position:absolute;right:80px;bottom:80px;opacity:.07}
+.contact-photo{
+  position:relative;
+  height:min(92vh,820px);
+  width:auto;
+  z-index:2;
+  pointer-events:none;
+  margin-right:-40px;
+  transform:translateX(120px);
+  opacity:0;
+  transition:transform 1.2s cubic-bezier(.22,1,.36,1), opacity 1s ease;
+}
+.contact-wrap > *{position:relative;z-index:3}
+.f5.active .contact-photo{
+  transform:translateX(0);
+  opacity:1;
+}
 
 /* LOADING SCREEN */
 #loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;transition:opacity .6s}
@@ -208,6 +304,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .hero-deco{right:56px}
   .contact-deco{right:56px;bottom:56px}
   .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-wrap{padding:40px 56px 48px}
 }
 
 @media (max-width: 1024px){
@@ -221,6 +318,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .about-right{padding-left:0;width:100%}
   .sk-grid,.proj-grid{grid-template-columns:repeat(2,1fr)}
   .contact-deco{display:none}
+  .contact-wrap{flex-direction:column;align-items:flex-start;gap:16px;padding:34px 40px 44px}
+  .contact-content{max-width:100%}
+  .contact-photo{align-self:flex-end;height:min(52vh,390px)}
+  .f5.active .contact-photo{opacity:.2}
 }
 
 @media (max-width: 768px){
@@ -261,7 +362,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   }
   .corner{display:none}
   .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{padding:52px 18px 92px}
-  .hero-title,.about-p,.svc-p,.contact-sub{font-size:11px;line-height:1.9}
+  .hero-title,.about-p,.about-p--ctx,.svc-p,.contact-sub{font-size:11px;line-height:1.9}
   .hero-cta{margin-top:30px;gap:10px}
   .btn-main,.btn-ghost{padding:12px 18px;font-size:9px;letter-spacing:2px}
   .hero-deco,.hero-bg-text{display:none}
@@ -274,6 +375,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .ct{gap:14px;padding:14px 0}
   .ct-ico{width:36px;height:36px;font-size:11px}
   .ct-val{font-size:11px;word-break:break-word}
+  .contact-photo{
+    height:min(42vh,320px);
+  }
+  .f5.active .contact-photo{opacity:.18}
+  .contact-wrap{padding:28px 18px 34px}
 }
 
 @media (max-width: 420px){
@@ -289,7 +395,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 @media (max-width: 380px){
   .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{padding:48px 14px 88px}
   .hero-tag,.sec-label{font-size:8px;letter-spacing:3px}
-  .about-p,.svc-p,.contact-sub,.sk-d,.proj-desc{font-size:10px;line-height:1.75}
+  .about-p,.about-p--ctx,.svc-p,.contact-sub,.sk-d,.proj-desc{font-size:10px;line-height:1.75}
   .proj-cat{letter-spacing:2px}
   .proj-title{font-size:11px}
   .ct-lbl{letter-spacing:2px}
@@ -303,7 +409,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   }
   .hero-name{font-size:clamp(26px,5.4vw,44px);line-height:1}
   .contact-h{font-size:clamp(26px,5vw,42px)}
-  .hero-title,.about-p,.svc-p,.contact-sub{line-height:1.55}
+  .hero-title,.about-p,.about-p--ctx,.svc-p,.contact-sub{line-height:1.55}
   .hero-cta{margin-top:18px}
   #hint{display:none}
 }
@@ -346,6 +452,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 <div id="counter">01 · 06</div>
 <div id="sec-label">Accueil</div>
 <div id="hint">↓ scroll · swipe · flèches clavier</div>
+<div id="lang-switch">
+  <button class="lang-btn active" data-lang="fr" type="button">FR</button>
+  <button class="lang-btn" data-lang="en" type="button">EN</button>
+</div>
 
 <!-- 3D SCENE -->
 <div id="scene">
@@ -358,9 +468,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
       <div class="hero-deco" id="gdeco"></div>
       <span class="hero-tag">Portfolio · 2025</span>
       <h1 class="hero-name">
-        TAMPOUHOUNRO<br>
-        <span class="accent">Marshall</span><br>
-        Chedid
+        Marshall<br>
+        Chedid<br>
+        <span class="accent">Tampouhounro</span>
       </h1>
       <p class="hero-title">
         Product &amp; Business Manager · Digital &amp; AI-driven<br>
@@ -380,9 +490,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
         <span class="sec-label">01 · À propos</span>
         <h2 class="about-h">Bâtisseur<br>de solutions<br>digitales.</h2>
         <p class="about-p">
-          Product &amp; Business Manager spécialisé en transformation digitale et IA. 
-          Je conçois des produits qui allient vision stratégique, expérience utilisateur 
+          Product &amp; Business Manager et <strong>référent digital</strong> au Bénin, spécialisé en transformation digitale et IA.
+          Je conçois des produits qui allient vision stratégique, expérience utilisateur
           et performance technique. De l'idée au déploiement, je pilote chaque étape.
+        </p>
+        <p class="about-p about-p--ctx">
+          Écosystème numérique béninois : <strong>Bénin Digital Product</strong>, <strong>Sèmè City</strong>,
+          <strong>École des métiers du numérique</strong> — produit digital, formation et innovation.
         </p>
       </div>
       <div class="about-right">
@@ -536,49 +650,52 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   <!-- FACE 5 — CONTACT -->
   <div class="face f5">
     <div class="contact-wrap">
-      <span class="sec-label">05 · Contact</span>
-      <h2 class="contact-h">
-        Travaillons<br>
-        <span class="hl">ensemble.</span>
-      </h2>
-      <p class="contact-sub">
-        Disponible pour missions freelance, CDI ou collaborations créatives.<br>
-        Basé à Cotonou au Bénin · Remote-friendly partout dans le monde.
-      </p>
-      <div class="ct-list">
-        <a class="ct ct-link" href="mailto:marshall.tampouhounro@gmail.com">
-          <div class="ct-ico">@</div>
-          <div class="ct-info">
-            <div class="ct-lbl">Email</div>
-            <div class="ct-val">marshall.tampouhounro@gmail.com</div>
+      <div class="contact-content">
+        <span class="sec-label">05 · Contact</span>
+        <h2 class="contact-h">
+          Travaillons<br>
+          <span class="hl">ensemble.</span>
+        </h2>
+        <p class="contact-sub">
+          Disponible pour missions freelance, CDI ou collaborations créatives.<br>
+          Basé à Cotonou au Bénin · Remote-friendly partout dans le monde.
+        </p>
+        <div class="ct-list">
+          <a class="ct ct-link" href="mailto:marshall.tampouhounro@gmail.com">
+            <div class="ct-ico">@</div>
+            <div class="ct-info">
+              <div class="ct-lbl">Email</div>
+              <div class="ct-val">marshall.tampouhounro@gmail.com</div>
+            </div>
+            <div class="ct-arr">→</div>
+          </a>
+          <a class="ct ct-link" href="http://linkedin.com/in/marshall-chedid-tampouhounro" target="_blank" rel="noopener noreferrer">
+            <div class="ct-ico">in</div>
+            <div class="ct-info">
+              <div class="ct-lbl">LinkedIn</div>
+              <div class="ct-val">linkedin.com/in/marshall-chedid-tampouhounro</div>
+            </div>
+            <div class="ct-arr">→</div>
+          </a>
+          <a class="ct ct-link" href="https://x.com/marshall_chedid?s=21" target="_blank" rel="noopener noreferrer">
+            <div class="ct-ico">X</div>
+            <div class="ct-info">
+              <div class="ct-lbl">Twitter / X</div>
+              <div class="ct-val">x.com/marshall_chedid</div>
+            </div>
+            <div class="ct-arr">→</div>
+          </a>
+          <div class="ct">
+            <div class="ct-ico">◈</div>
+            <div class="ct-info">
+              <div class="ct-lbl">Portfolio live</div>
+              <div class="ct-val">marshallchedid.com</div>
+            </div>
+            <div class="ct-arr">→</div>
           </div>
-          <div class="ct-arr">→</div>
-        </a>
-        <a class="ct ct-link" href="http://linkedin.com/in/marshall-chedid-tampouhounro" target="_blank" rel="noopener noreferrer">
-          <div class="ct-ico">in</div>
-          <div class="ct-info">
-            <div class="ct-lbl">LinkedIn</div>
-            <div class="ct-val">linkedin.com/in/marshall-chedid-tampouhounro</div>
-          </div>
-          <div class="ct-arr">→</div>
-        </a>
-        <a class="ct ct-link" href="https://x.com/marshall_chedid?s=21" target="_blank" rel="noopener noreferrer">
-          <div class="ct-ico">X</div>
-          <div class="ct-info">
-            <div class="ct-lbl">Twitter / X</div>
-            <div class="ct-val">x.com/marshall_chedid</div>
-          </div>
-          <div class="ct-arr">→</div>
-        </a>
-        <div class="ct">
-          <div class="ct-ico">◈</div>
-          <div class="ct-info">
-            <div class="ct-lbl">Portfolio live</div>
-            <div class="ct-val">marshallchedid.com</div>
-          </div>
-          <div class="ct-arr">→</div>
         </div>
       </div>
+      <img class="contact-photo" src="assets/profile.png" alt="Photo professionnelle de Marshall Chedid Tampouhounro" loading="lazy">
       <!-- deco -->
       <svg class="contact-deco" width="180" height="180" viewBox="0 0 180 180">
         <rect x="0" y="0" width="54" height="54" fill="none" stroke="#0a0a08" stroke-width="2"/>
@@ -611,7 +728,11 @@ const gd=document.getElementById('gdeco');
 if(gd){for(let i=0;i<42;i++){const d=document.createElement('div');d.className='hd'+(i%3===0?' f':'');gd.appendChild(d);}}
 
 // ---- SECTION TRANSITIONS ----
-const sections=['Accueil','À propos','Skills','Services','Projets','Contact'];
+const sectionsByLang={
+  fr:['Accueil','À propos','Compétences','Services','Projets','Contact'],
+  en:['Home','About','Skills','Services','Projects','Contact']
+};
+let currentLang=localStorage.getItem('site_lang')||'fr';
 
 let cur=0, busy=false;
 const faces=document.querySelectorAll('.face');
@@ -619,6 +740,96 @@ const dots=document.querySelectorAll('.ndot');
 const counter=document.getElementById('counter');
 const hint=document.getElementById('hint');
 const secLbl=document.getElementById('sec-label');
+const langBtns=document.querySelectorAll('.lang-btn');
+
+function applyLang(lang){
+  const t={
+    fr:{
+      title:'Marshall Chedid Tampouhounro — Product & Business Manager · Portfolio',
+      hint:'↓ scroll · swipe · flèches clavier',
+      heroTag:'Portfolio · 2025',
+      heroTitle:'Product & Business Manager · Digital & AI-driven<br>Web Dev · UI/UX Design · Stratégie · Contenu · Vidéo',
+      heroBtn1:'Découvrir →',
+      heroBtn2:'Me contacter',
+      aboutLabel:'01 · À propos',
+      aboutH:'Bâtisseur<br>de solutions<br>digitales.',
+      aboutP1:'Product & Business Manager et <strong>référent digital</strong> au Bénin, spécialisé en transformation digitale et IA. Je conçois des produits qui allient vision stratégique, expérience utilisateur et performance technique. De l\'idée au déploiement, je pilote chaque étape.',
+      aboutP2:'Écosystème numérique béninois : <strong>Bénin Digital Product</strong>, <strong>Sèmè City</strong>, <strong>École des métiers du numérique</strong> — produit digital, formation et innovation.',
+      stats:['Ans d\'exp.','Projets','Domaines','Créativité'],
+      skillsLabel:'02 · Compétences',
+      skillsH:'Ce que<br>je maîtrise.',
+      svcLabel:'03 · Services',
+      svcH:'Ce que<br>je fais<br>pour vous.',
+      svcP:'Solutions sur-mesure pour accélérer<br>votre transformation digitale et faire<br>grandir vos produits.',
+      svcBtn:'Travailler ensemble →',
+      projLabel:'04 · Projets',
+      projH:'Réalisations<br>sélectionnées.',
+      contactLabel:'05 · Contact',
+      contactH:'Travaillons<br><span class="hl">ensemble.</span>',
+      contactSub:'Disponible pour missions freelance, CDI ou collaborations créatives.<br>Basé à Cotonou au Bénin · Remote-friendly partout dans le monde.',
+      contactLbls:['Email','LinkedIn','Twitter / X','Portfolio live']
+    },
+    en:{
+      title:'Marshall Chedid Tampouhounro — Product & Business Manager · Portfolio',
+      hint:'↓ scroll · swipe · keyboard arrows',
+      heroTag:'Portfolio · 2025',
+      heroTitle:'Product & Business Manager · Digital & AI-driven<br>Web Dev · UI/UX Design · Strategy · Content · Video',
+      heroBtn1:'Explore →',
+      heroBtn2:'Contact me',
+      aboutLabel:'01 · About',
+      aboutH:'Building<br>digital<br>solutions.',
+      aboutP1:'Product & Business Manager and <strong>digital lead</strong> in Benin, specialized in digital transformation and AI. I design products that combine strategic vision, user experience, and technical performance. From idea to launch, I drive every stage.',
+      aboutP2:'Benin digital ecosystem: <strong>Benin Digital Product</strong>, <strong>Sèmè City</strong>, <strong>School of Digital Professions</strong> — product, training, and innovation.',
+      stats:['Years exp.','Projects','Domains','Creativity'],
+      skillsLabel:'02 · Skills',
+      skillsH:'What I<br>master.',
+      svcLabel:'03 · Services',
+      svcH:'What I<br>build<br>for you.',
+      svcP:'Tailor-made solutions to accelerate<br>your digital transformation and grow<br>your products.',
+      svcBtn:'Let\'s work together →',
+      projLabel:'04 · Projects',
+      projH:'Selected<br>work.',
+      contactLabel:'05 · Contact',
+      contactH:'Let\'s work<br><span class="hl">together.</span>',
+      contactSub:'Available for freelance roles, full-time positions, or creative collaborations.<br>Based in Cotonou, Benin · Remote-friendly worldwide.',
+      contactLbls:['Email','LinkedIn','Twitter / X','Portfolio live']
+    }
+  }[lang];
+
+  document.documentElement.lang=lang;
+  document.title=t.title;
+  hint.innerHTML=t.hint;
+  secLbl.textContent=sectionsByLang[lang][cur];
+  dots.forEach((d,i)=>d.title=sectionsByLang[lang][i]);
+  langBtns.forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+
+  document.querySelector('.hero-tag').textContent=t.heroTag;
+  document.querySelector('.hero-title').innerHTML=t.heroTitle;
+  document.querySelector('.hero-cta .btn-main').textContent=t.heroBtn1;
+  document.querySelector('.hero-cta .btn-ghost').textContent=t.heroBtn2;
+
+  document.querySelector('.f1 .sec-label').textContent=t.aboutLabel;
+  document.querySelector('.about-h').innerHTML=t.aboutH;
+  document.querySelector('.about-p').innerHTML=t.aboutP1;
+  document.querySelector('.about-p--ctx').innerHTML=t.aboutP2;
+  document.querySelectorAll('.stat-t').forEach((el,i)=>el.textContent=t.stats[i]);
+
+  document.querySelector('.f2 .sec-label').textContent=t.skillsLabel;
+  document.querySelector('.skills-h').innerHTML=t.skillsH;
+
+  document.querySelector('.f3 .sec-label').textContent=t.svcLabel;
+  document.querySelector('.svc-h').innerHTML=t.svcH;
+  document.querySelector('.svc-p').innerHTML=t.svcP;
+  document.querySelector('.svc-left .btn-main').textContent=t.svcBtn;
+
+  document.querySelector('.f4 .sec-label').textContent=t.projLabel;
+  document.querySelector('.proj-h').innerHTML=t.projH;
+
+  document.querySelector('.f5 .sec-label').textContent=t.contactLabel;
+  document.querySelector('.contact-h').innerHTML=t.contactH;
+  document.querySelector('.contact-sub').innerHTML=t.contactSub;
+  document.querySelectorAll('.ct-lbl').forEach((el,i)=>el.textContent=t.contactLbls[i]);
+}
 
 function applyState(n, direction=1){
   faces.forEach((face, i)=>{
@@ -642,7 +853,7 @@ function goTo(n){
   cur=n;
   dots.forEach((d,i)=>d.classList.toggle('active',i===n));
   counter.textContent=(n+1).toString().padStart(2,'0')+' · 06';
-  secLbl.textContent=sections[n];
+  secLbl.textContent=sectionsByLang[currentLang][n];
   if(n>0)hint.style.opacity='0';
   setTimeout(()=>{busy=false;},760);
 }
@@ -661,23 +872,60 @@ let wt=0;
 window.addEventListener('wheel',e=>{
   const now=Date.now();
   if(now-wt<900)return;
+  const activeFace=document.querySelector('.face.active');
+  if(activeFace){
+    const atTop=activeFace.scrollTop<=0;
+    const atBottom=(activeFace.scrollTop + activeFace.clientHeight) >= (activeFace.scrollHeight - 1);
+    // Si on peut encore scroller dans la section, on ne change pas de page.
+    if(e.deltaY>0 && !atBottom) return;
+    if(e.deltaY<0 && !atTop) return;
+  }
   wt=now;
   e.deltaY>0?next():prev();
 },{passive:true});
 
 // Touch
 let ty=null;
-window.addEventListener('touchstart',e=>{ty=e.touches[0].clientY;},{passive:true});
+let touchFace=null;
+window.addEventListener('touchstart',e=>{
+  ty=e.touches[0].clientY;
+  touchFace=(e.target && e.target.closest) ? e.target.closest('.face') : null;
+},{passive:true});
 window.addEventListener('touchend',e=>{
   if(ty===null)return;
+  const activeFace=document.querySelector('.face.active');
+  const face=touchFace || activeFace;
   const dy=ty-e.changedTouches[0].clientY;
-  if(Math.abs(dy)>50){dy>0?next():prev();}
+  const absDy=Math.abs(dy);
   ty=null;
+  touchFace=null;
+  if(absDy<70) return; // swipe intentionnel seulement
+
+  if(face){
+    const atTop=face.scrollTop<=0;
+    const atBottom=(face.scrollTop + face.clientHeight) >= (face.scrollHeight - 1);
+    // Swipe vers le haut => page suivante seulement si déjà en bas
+    if(dy>0 && !atBottom) return;
+    // Swipe vers le bas => page précédente seulement si déjà en haut
+    if(dy<0 && !atTop) return;
+  }
+
+  dy>0?next():prev();
 },{passive:true});
 
 // Init
 faces.forEach((f,i)=>f.classList.toggle('active',i===0));
 applyState(0,1);
+applyLang(currentLang);
+langBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const lang=btn.dataset.lang;
+    if(lang===currentLang)return;
+    currentLang=lang;
+    localStorage.setItem('site_lang',lang);
+    applyLang(lang);
+  });
+});
 setTimeout(()=>{hint.style.opacity='0';},4000);
 </script>
 </body>
