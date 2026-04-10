@@ -81,6 +81,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+img{max-width:100%;height:auto;display:block}
 :root{
   --bg:#0a0a08;
   --cream:#f0ead6;
@@ -251,8 +252,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 /* SECTION 5 — CONTACT   */
 /* ===================== */
 .f5{background:var(--cream)}
-.contact-wrap{display:grid;grid-template-columns:minmax(0,620px) minmax(240px,1fr);width:100%;min-height:100%;padding:46px 80px 50px;align-items:end;gap:clamp(24px,4vw,70px);position:relative}
-.contact-content{min-width:0}
+.contact-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,42vw);width:100%;min-height:100%;padding:46px 80px 50px;align-items:end;gap:clamp(24px,4vw,70px);position:relative}
+.contact-content{min-width:0;max-width:620px}
 .contact-wrap .sec-label{color:var(--orange)}
 .contact-h{font-family:'Unbounded',sans-serif;font-size:clamp(32px,5.5vw,76px);font-weight:900;color:var(--bg);line-height:.9;margin-bottom:8px}
 .contact-h .hl{color:var(--orange)}
@@ -266,18 +267,18 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 .ct:hover .ct-ico{background:var(--orange);border-color:var(--orange);color:var(--white)}
 .ct-info{flex:1}
 .ct-lbl{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--bg);opacity:.45;margin-bottom:3px}
-.ct-val{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;color:var(--bg)}
+.ct-val{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;color:var(--bg);overflow-wrap:anywhere}
 .ct-arr{color:var(--orange);font-size:20px;opacity:0;transition:opacity .2s}
 .ct:hover .ct-arr{opacity:1}
 /* Deco */
 .contact-deco{position:absolute;right:80px;bottom:80px;opacity:.07}
 .contact-photo{
   position:relative;
-  width:clamp(320px, 42vw, 620px);
-  max-width:100%;
+  width:min(100%,clamp(300px,36vw,560px));
   height:auto;
-  max-height:min(92vh,820px);
-  display:block;
+  max-height:min(88vh,820px);
+  object-fit:contain;
+  object-position:bottom center;
   z-index:1;
   pointer-events:none;
   transform:translateX(120px);
@@ -308,7 +309,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .hero-deco{right:56px}
   .contact-deco{right:56px;bottom:56px}
   .proj-grid{grid-template-columns:repeat(2,1fr)}
-  .contact-wrap{padding:40px 56px 48px}
+  .contact-wrap{grid-template-columns:minmax(0,1fr) minmax(240px,38vw);padding:40px 56px 48px}
 }
 
 @media (max-width: 1024px){
@@ -322,9 +323,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .about-right{padding-left:0;width:100%}
   .sk-grid,.proj-grid{grid-template-columns:repeat(2,1fr)}
   .contact-deco{display:none}
-  .contact-wrap{grid-template-columns:1fr;grid-template-rows:auto 1fr auto;align-items:start;gap:18px;padding:34px 40px 44px}
-  .contact-content{grid-row:1}
-  .contact-photo{grid-row:3;width:clamp(280px, 60vw, 520px);max-height:min(52vh,520px);justify-self:end;align-self:end}
+  .contact-wrap{grid-template-columns:minmax(0,1fr) minmax(220px,36vw);align-items:end;gap:20px;padding:34px 40px 44px}
+  .contact-content{max-width:100%}
+  .contact-photo{width:min(100%,clamp(240px,34vw,440px));max-height:min(55vh,520px);justify-self:end;align-self:end}
   .f5.active .contact-photo{opacity:1}
 }
 
@@ -367,6 +368,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .corner{display:none}
   .hero-wrap,.about-wrap,.skills-wrap,.svc-wrap,.proj-wrap,.contact-wrap{padding:52px 18px 92px}
   .hero-title,.about-p,.about-p--ctx,.svc-p,.contact-sub{font-size:11px;line-height:1.9}
+  .hero-title{letter-spacing:1.6px;max-width:100%}
   .hero-cta{margin-top:30px;gap:10px}
   .btn-main,.btn-ghost{padding:12px 18px;font-size:9px;letter-spacing:2px}
   .hero-deco,.hero-bg-text{display:none}
@@ -379,12 +381,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .ct{gap:14px;padding:14px 0}
   .ct-ico{width:36px;height:36px;font-size:11px}
   .ct-val{font-size:11px;word-break:break-word}
-  .contact-wrap{grid-template-columns:1fr;grid-template-rows:auto 1fr auto;gap:16px;padding:28px 18px max(14px, env(safe-area-inset-bottom))}
-  .contact-content{grid-row:1}
+  .contact-wrap{grid-template-columns:1fr;gap:16px;padding:28px 18px calc(max(14px, env(safe-area-inset-bottom)) + 24px)}
   .contact-photo{
-    grid-row:3;
-    width:clamp(240px, 78vw, 420px);
-    max-height:min(48vh,380px);
+    width:clamp(220px,72vw,360px);
+    max-height:min(42dvh,320px);
+    object-fit:contain;
+    object-position:bottom center;
     opacity:0;
     filter:none;
     justify-self:center;
@@ -393,13 +395,32 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .f5.active .contact-photo{opacity:1}
 }
 
+/* Paysage tablette / téléphone : hauteur d’écran faible → éviter largeur en vw trop grande + max-height en vh trop petite (déformation) */
+@media (max-width:1024px) and (orientation:landscape) and (max-height:520px){
+  .contact-photo{
+    width:auto;
+    max-width:min(42vw,280px);
+    max-height:min(70dvh,260px);
+    object-fit:contain;
+    object-position:bottom right;
+  }
+}
+@media (max-width:768px) and (orientation:landscape) and (max-height:520px){
+  .contact-photo{
+    max-width:min(55vw,320px);
+    max-height:min(62dvh,220px);
+  }
+}
+
 @media (max-width: 420px){
   .hero-name{font-size:clamp(24px,9.6vw,38px);letter-spacing:-.6px}
+  .hero-title{font-size:10px;letter-spacing:1.2px;line-height:1.75}
   .contact-h{font-size:clamp(30px,12vw,44px)}
   .proj{min-height:118px;padding:16px 14px}
   .proj-title{font-size:12px}
   .proj-desc{font-size:9px;line-height:1.75}
   #hint{display:none}
+  #lang-switch{top:12px}
 }
 
 /* Petits mobiles (iPhone SE / Android compacts) */
@@ -410,6 +431,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .proj-cat{letter-spacing:2px}
   .proj-title{font-size:11px}
   .ct-lbl{letter-spacing:2px}
+  .contact-photo{width:clamp(200px,70vw,300px);max-height:min(38dvh,250px)}
 }
 
 /* Mobiles en paysage: on réduit les grands titres pour éviter la coupe */
@@ -423,6 +445,16 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
   .hero-title,.about-p,.about-p--ctx,.svc-p,.contact-sub{line-height:1.55}
   .hero-cta{margin-top:18px}
   #hint{display:none}
+}
+
+@media (max-width:1024px) and (orientation:landscape) and (max-height:520px){
+  .contact-wrap{grid-template-columns:minmax(0,1fr) minmax(180px,34vw);align-items:end;gap:14px}
+  .contact-photo{
+    width:min(100%,280px);
+    max-height:min(64dvh,240px);
+    object-position:bottom right;
+    justify-self:end;
+  }
 }
 
 /* Très grands écrans: meilleure respiration visuelle */
